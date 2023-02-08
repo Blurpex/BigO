@@ -58,43 +58,50 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         StringBuilder sb = new StringBuilder();
         if(dataStruct.contains("Binary")) {
             if(complexityCase == R.id.rButton_average) {
-                sb.append("Binary Search Tree average case time complexity:");
-                operations.forEach((n) -> sb.append("\n").append(n).append(": O(log(n))"));
+                sb.append("Binary Search Tree average case time complexity:\n");
+                operations.forEach((n) -> sb.append(n).append(": O(log(n))"));
             } else if (complexityCase == R.id.rButton_worst) {
-                sb.append("Binary Search Tree worst case time complexity:");
-                operations.forEach((n) -> sb.append("\n").append(n).append(": O(n)"));
+                sb.append("Binary Search Tree worst case time complexity:\n");
+                operations.forEach((n) -> sb.append(n).append(": O(n)"));
             }
         } else if(dataStruct.contains("2")) {
             if (complexityCase == R.id.rButton_average)
-                sb.append("2-3 Tree average case time complexity:");
+                sb.append("2-3 Tree average case time complexity:\n");
             else if (complexityCase == R.id.rButton_worst)
-                sb.append("2-3 Tree worst case time complexity:");
-            operations.forEach((n) -> sb.append("\n").append(n).append(": O(log(n))"));
+                sb.append("2-3 Tree worst case time complexity:\n");
+            operations.forEach((n) -> sb.append(n).append(": O(log(n))"));
         } else if(dataStruct.contains("Hash")) {
             if(complexityCase == R.id.rButton_average) {
-                sb.append("Hash Table average case time complexity:");
-                operations.forEach((n) -> sb.append("\n").append(n).append(": O(1)"));
+                sb.append("Hash Table average case time complexity:\n");
+                operations.forEach((n) -> sb.append(n).append(": O(1)"));
             } else if (complexityCase == R.id.rButton_worst) {
-                sb.append("Hash Table worst case time complexity:");
-                operations.forEach((n) -> sb.append("\n").append(n).append(": O(n)"));
+                sb.append("Hash Table worst case time complexity:\n");
+                operations.forEach((n) -> sb.append(n).append(": O(n)"));
             }
         } else if(dataStruct.contains("Linked")) {
-            if(complexityCase == R.id.rButton_average) {
+            if(complexityCase == R.id.rButton_average)
                 sb.append("Linked List average case time complexity:");
-                operations.forEach((n) -> sb.append("\n").append(n).append(": O(1)"));
-            } else if (complexityCase == R.id.rButton_worst) {
+            else if (complexityCase == R.id.rButton_worst)
                 sb.append("Linked List worst case time complexity:");
-                operations.forEach((n) -> sb.append("\n").append(n).append(": O(n)"));
-            }
+            if(operations.contains("Get Min")) sb.append("\nGet Min: O(n)");
+            if(operations.contains("Insert")) sb.append("\nInsert: O(1)");
+            if(operations.contains("Search")) sb.append("\nSearch: O(n)");
         } else if(dataStruct.contains("Min")) {
-            if(complexityCase == R.id.rButton_average) {
+            if(complexityCase == R.id.rButton_average)
                 sb.append("Min Heap average case time complexity:");
-                operations.forEach((n) -> sb.append("\n").append(n).append(": O(1)"));
-            } else if(complexityCase == R.id.rButton_worst) {
+            else if(complexityCase == R.id.rButton_worst)
                 sb.append("Min Heap worst case time complexity:");
-                operations.forEach((n) -> sb.append("\n").append(n).append(": O(n)"));
-            }
+            if(operations.contains("Get Min") ) sb.append("\nGet Min: O(1)");
+            if(operations.contains("Insert")) sb.append("\nInsert: O(log(n))");
+            if(operations.contains("Search")) sb.append("\nSearch: O(log(n))");
         }
         return String.valueOf(sb);
     }
 }
+
+// data structure -> worst: getMin(), insert(), search() | average: getMin(), insert(), search()
+// binary search tree -> O(log(n)), O(log(n)), O(log(n)) | O(n), O(n), O(n)
+// 2-3 tree -> O(log(n)), O(log(n)), O(log(n)) | O(log(n)), O(log(n)), O(log(n))
+// Hash Table -> O(1), O(1), O(1) | O(n), O(n), O(n)
+// Linked List -> O(n), O(1), O(n) | O(n), O(1), O(n)
+// Min Heap -> O(1), O(log(n)), O(log(n)) | O(1), O(log(n)), O(log(n))
