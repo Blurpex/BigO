@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- left guideline -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <!-- right guideline -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <!-- email heading -->
+    <TextView
+        android:id="@+id/tView_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tView_email"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- email address -->
+    <EditText
+        android:id="@+id/eText_emailAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints="emailAddress"
+        android:hint="@string/eText_emailAddress"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/right_guide"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tView_email" />
+
+    <!-- email subject -->
+    <EditText
+        android:id="@+id/eText_emailSubject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints="emailAddress"
+        android:hint="@string/eText_emailSubject"
+        android:inputType="textEmailSubject"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/right_guide"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/eText_emailAddress" />
+
+    <!-- complexity heading -->
+    <TextView
+        android:id="@+id/tView_complexity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tView_complexity"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eText_emailSubject" />
+
+    <!-- data structure subheading -->
+    <TextView
+        android:id="@+id/tView_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tView_data"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tView_complexity" />
+
+    <!-- data structure spinner -->
+    <Spinner
+        android:id="@+id/spinner_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/spinner_data"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/right_guide"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tView_data" />
+
+    <!-- operations subheading -->
+    <TextView
+        android:id="@+id/tView_operations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tView_operations"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_data" />
+
+    <!-- get min checkbox -->
+    <CheckBox
+        android:id="@+id/cBox_getMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/cBox_getMin"
+        android:onClick="getOperations"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tView_operations" />
+
+    <!-- insert checkbox -->
+    <CheckBox
+        android:id="@+id/cBox_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/cBox_insert"
+        android:onClick="getOperations"
+        app:layout_constraintEnd_toStartOf="@+id/cBox_search"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cBox_getMin"
+        app:layout_constraintTop_toBottomOf="@+id/tView_operations" />
+
+    <!-- search checkbox -->
+    <CheckBox
+        android:id="@+id/cBox_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/cBox_search"
+        android:onClick="getOperations"
+        app:layout_constraintEnd_toStartOf="@+id/right_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tView_operations" />
+
+    <!-- case subheading -->
+    <TextView
+        android:id="@+id/tView_case"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tView_case"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/cBox_getMin" />
+
+    <!-- case radio group -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:checkedButton="@id/rButton_average"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/right_guide"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tView_case">
+        <RadioButton
+            android:id="@+id/rButton_average"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getCase"
+            android:text="@string/rButton_average" />
+
+        <RadioButton
+            android:id="@+id/rButton_worst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getCase"
+            android:text="@string/rButton_worst"/>
+    </RadioGroup>
+
+    <!-- result heading -->
+    <TextView
+        android:id="@+id/tView_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tView_result"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <!-- to subheading -->
+    <TextView
+        android:id="@+id/tView_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/tView_to"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tView_result" />
+
+    <!-- from subheading -->
+    <TextView
+        android:id="@+id/tView_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/tView_from"
+        app:layout_constraintStart_toStartOf="@+id/left_guide"
+        app:layout_constraintTop_toBottomOf="@+id/tView_to" />
+
+    <!-- floating send mail button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:onClick="sendMail"
+        android:contentDescription="@string/send_mail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_action_send" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

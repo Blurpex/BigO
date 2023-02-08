@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Big O</string>
+    <string name="tView_email">Email</string>
+    <string name="eText_emailAddress">Email Address</string>
+    <string name="eText_emailSubject">Email Subject</string>
+    <string name="tView_complexity">Complexity</string>
+    <string name="tView_data">Data Structure</string>
+    <string-array name="spinner_data">
+        <item>Binary Search Tree</item>
+        <item>2–3 Tree</item>
+        <item>Hash Table</item>
+        <item>Linked List</item>
+        <item>Min Heap</item>
+    </string-array>
+    <string name="tView_operations">Operations</string>
+    <string name="cBox_getMin">Get Min</string>
+    <string name="tView_case">Case</string>
+    <string name="cBox_insert">Insert</string>
+    <string name="cBox_search">Search</string>
+    <string name="rButton_average">Average Case</string>
+    <string name="rButton_worst">Worst Case</string>
+    <string name="tView_result">Result</string>
+    <string name="tView_to">To:</string>
+    <string name="tView_from">Subject:</string>
+    <string name="send_mail">send mail</string>
+</resources>
