@@ -159,7 +159,7 @@
     <!-- case radio group -->
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -169,19 +169,22 @@
         app:layout_constraintEnd_toStartOf="@+id/right_guide"
         app:layout_constraintStart_toStartOf="@+id/left_guide"
         app:layout_constraintTop_toBottomOf="@+id/tView_case">
+
         <RadioButton
             android:id="@+id/rButton_average"
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:onClick="getCase"
-            android:text="@string/rButton_average" />
+            android:text="@string/rButton_average"
+            android:layout_width="0dp"/>
 
         <RadioButton
             android:id="@+id/rButton_worst"
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:onClick="getCase"
-            android:text="@string/rButton_worst"/>
+            android:text="@string/rButton_worst"
+            android:layout_width="0dp"/>
     </RadioGroup>
 
     <!-- result heading -->
@@ -201,7 +204,6 @@
         android:id="@+id/tView_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/tView_to"
         app:layout_constraintStart_toStartOf="@+id/left_guide"
@@ -212,7 +214,6 @@
         android:id="@+id/tView_from"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/tView_from"
         app:layout_constraintStart_toStartOf="@+id/left_guide"

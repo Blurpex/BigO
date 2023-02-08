@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         dataStruct = adapterView.getItemAtPosition(i).toString();
+        // getItemSelectedPosition, getSelectedItem
     }
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {}
@@ -51,49 +52,48 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String subject = "Subject: " + ((TextView)findViewById(R.id.eText_emailSubject)).getText().toString();
 
         ((TextView)findViewById(R.id.tView_to)).setText(emailAddress);
-        ((TextView)findViewById(R.id.tView_from)).setText(subject + "\n\t" + string());
+        ((TextView)findViewById(R.id.tView_from)).setText(subject + "\n" + getComplexity());
     }
-
-    public String string() {
+    public String getComplexity() {
         StringBuilder sb = new StringBuilder();
         if(dataStruct.contains("Binary")) {
             if(complexityCase == R.id.rButton_average) {
                 sb.append("Binary Search Tree average case time complexity:\n");
-                operations.forEach((n) -> sb.append(n).append(": O(log(n))"));
+                operations.forEach((n) -> sb.append(n).append(": O(log(n))\n"));
             } else if (complexityCase == R.id.rButton_worst) {
                 sb.append("Binary Search Tree worst case time complexity:\n");
-                operations.forEach((n) -> sb.append(n).append(": O(n)"));
+                operations.forEach((n) -> sb.append(n).append(": O(n)\n"));
             }
         } else if(dataStruct.contains("2")) {
             if (complexityCase == R.id.rButton_average)
                 sb.append("2-3 Tree average case time complexity:\n");
             else if (complexityCase == R.id.rButton_worst)
                 sb.append("2-3 Tree worst case time complexity:\n");
-            operations.forEach((n) -> sb.append(n).append(": O(log(n))"));
+            operations.forEach((n) -> sb.append(n).append(": O(log(n))\n"));
         } else if(dataStruct.contains("Hash")) {
             if(complexityCase == R.id.rButton_average) {
                 sb.append("Hash Table average case time complexity:\n");
-                operations.forEach((n) -> sb.append(n).append(": O(1)"));
+                operations.forEach((n) -> sb.append(n).append(": O(1)\n"));
             } else if (complexityCase == R.id.rButton_worst) {
                 sb.append("Hash Table worst case time complexity:\n");
-                operations.forEach((n) -> sb.append(n).append(": O(n)"));
+                operations.forEach((n) -> sb.append(n).append(": O(n)\n"));
             }
         } else if(dataStruct.contains("Linked")) {
             if(complexityCase == R.id.rButton_average)
-                sb.append("Linked List average case time complexity:");
+                sb.append("Linked List average case time complexity:\n");
             else if (complexityCase == R.id.rButton_worst)
-                sb.append("Linked List worst case time complexity:");
-            if(operations.contains("Get Min")) sb.append("\nGet Min: O(n)");
-            if(operations.contains("Insert")) sb.append("\nInsert: O(1)");
-            if(operations.contains("Search")) sb.append("\nSearch: O(n)");
+                sb.append("Linked List worst case time complexity:\n");
+            if(operations.contains("Get Min")) sb.append("Get Min: O(n)\n");
+            if(operations.contains("Insert")) sb.append("Insert: O(1)\n");
+            if(operations.contains("Search")) sb.append("Search: O(n)\n");
         } else if(dataStruct.contains("Min")) {
             if(complexityCase == R.id.rButton_average)
-                sb.append("Min Heap average case time complexity:");
+                sb.append("Min Heap average case time complexity\n");
             else if(complexityCase == R.id.rButton_worst)
-                sb.append("Min Heap worst case time complexity:");
-            if(operations.contains("Get Min") ) sb.append("\nGet Min: O(1)");
-            if(operations.contains("Insert")) sb.append("\nInsert: O(log(n))");
-            if(operations.contains("Search")) sb.append("\nSearch: O(log(n))");
+                sb.append("Min Heap worst case time complexity:\n");
+            if(operations.contains("Get Min") ) sb.append("Get Min: O(1)\n");
+            if(operations.contains("Insert")) sb.append("Insert: O(log(n))\n");
+            if(operations.contains("Search")) sb.append("Search: O(log(n))\n");
         }
         return String.valueOf(sb);
     }
