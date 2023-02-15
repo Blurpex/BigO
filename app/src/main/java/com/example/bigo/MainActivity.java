@@ -3,6 +3,8 @@ package com.example.bigo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return String.valueOf(sb);
     }
 
+    // toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -111,18 +114,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return true;
     }
 
+    // toolbar menu functionality
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch(menuItem.getItemId()) {
             case (R.id.menu_compose):
+                String emailAddress = ((TextView) findViewById(R.id.eText_emailAddress)).getText().toString();
+                String subject = ((TextView) findViewById(R.id.eText_emailSubject)).getText().toString();
+                String text = getComplexity();
                 if(menuItem.getTitle().equals("Compose")) {
-                    String emailAddress = "To: " + ((TextView) findViewById(R.id.eText_emailAddress)).getText().toString();
-                    String subject = "Subject: " + ((TextView) findViewById(R.id.eText_emailSubject)).getText().toString();
-                    ((TextView) findViewById(R.id.tView_to)).setText(emailAddress);
-                    ((TextView) findViewById(R.id.tView_subject)).setText(subject + "\n" + getComplexity());
+                    ((TextView) findViewById(R.id.tView_to)).setText("To: " + emailAddress);
+                    ((TextView) findViewById(R.id.tView_subject)).setText("Subject: " + subject + "\n" + text);
                     menuItem.setIcon(R.drawable.ic_action_send);
                     menuItem.setTitle(R.string.menu_send);
                 } else {
+                    composeEmail(emailAddress, subject, text);
                     TextView tv = ((TextView)findViewById(R.id.tView_subject));
                     tv.setText(R.string.tView_subject);
                     menuItem.setIcon(R.drawable.ic_compose);
@@ -135,6 +141,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 return super.onOptionsItemSelected(menuItem);
         }
     }
+
+    // send mail
+    public void composeEmail(String address, String subject, String body) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + address));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+        startActivity(Intent.createChooser(emailIntent, "Chooser Title"));
+    }
+
 }
 
 // data structure -> worst: getMin(), insert(), search() | average: getMin(), insert(), search()
