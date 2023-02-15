@@ -1,8 +1,12 @@
 package com.example.bigo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -21,7 +25,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+//        setSupportActionBar((androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar));
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
         ((Spinner)findViewById(R.id.spinner_data)).setOnItemSelectedListener(this);
     }
 
@@ -52,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String subject = "Subject: " + ((TextView)findViewById(R.id.eText_emailSubject)).getText().toString();
 
         ((TextView)findViewById(R.id.tView_to)).setText(emailAddress);
-        ((TextView)findViewById(R.id.tView_from)).setText(subject + "\n" + getComplexity());
+        ((TextView)findViewById(R.id.tView_subject)).setText(subject + "\n" + getComplexity());
     }
     public String getComplexity() {
         StringBuilder sb = new StringBuilder();
@@ -96,6 +102,38 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if(operations.contains("Search")) sb.append("Search: O(log(n))\n");
         }
         return String.valueOf(sb);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_activity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch(menuItem.getItemId()) {
+            case (R.id.menu_compose):
+                if(menuItem.getTitle().equals("Compose")) {
+                    String emailAddress = "To: " + ((TextView) findViewById(R.id.eText_emailAddress)).getText().toString();
+                    String subject = "Subject: " + ((TextView) findViewById(R.id.eText_emailSubject)).getText().toString();
+                    ((TextView) findViewById(R.id.tView_to)).setText(emailAddress);
+                    ((TextView) findViewById(R.id.tView_subject)).setText(subject + "\n" + getComplexity());
+                    menuItem.setIcon(R.drawable.ic_action_send);
+                    menuItem.setTitle(R.string.menu_send);
+                } else {
+                    TextView tv = ((TextView)findViewById(R.id.tView_subject));
+                    tv.setText(R.string.tView_subject);
+                    menuItem.setIcon(R.drawable.ic_compose);
+                    menuItem.setTitle(R.string.menu_compose);
+                }
+                return true;
+            case (R.id.menu_settings):
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
+        }
     }
 }
 

@@ -197,12 +197,12 @@
 
     <!-- from subheading -->
     <TextView
-        android:id="@+id/tView_from"
+        android:id="@+id/tView_subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="@string/tView_from"
+        android:text="@string/tView_subject"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tView_to" />
 

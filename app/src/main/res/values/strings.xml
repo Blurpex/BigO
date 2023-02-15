@@ -1,4 +1,6 @@
 <resources>
+
+    <!-- activity_main.xml -->
     <string name="app_name">Big O</string>
     <string name="tView_email">Email</string>
     <string name="eText_emailAddress">Email Address</string>
@@ -21,6 +23,11 @@
     <string name="rButton_worst">Worst Case</string>
     <string name="tView_result">Result</string>
     <string name="tView_to">To:</string>
-    <string name="tView_from">Subject:</string>
+    <string name="tView_subject">Subject:</string>
     <string name="send_mail">send mail</string>
+
+    <!-- toolbar_activity.xml -->
+    <string name="menu_compose">Compose</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_setting">Settings</string>
 </resources>
