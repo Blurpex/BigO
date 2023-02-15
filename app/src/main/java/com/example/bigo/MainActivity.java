@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String subject = "Subject: " + ((TextView)findViewById(R.id.eText_emailSubject)).getText().toString();
 
         ((TextView)findViewById(R.id.tView_to)).setText(emailAddress);
-        ((TextView)findViewById(R.id.tView_from)).setText(subject + "\n" + getComplexity());
+        ((TextView)findViewById(R.id.tView_subject)).setText(subject + "\n" + getComplexity());
     }
     public String getComplexity() {
         StringBuilder sb = new StringBuilder();
@@ -115,16 +115,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch(menuItem.getItemId()) {
             case (R.id.menu_compose):
-                // fill out the page
-                String emailAddress = "To: " + ((TextView)findViewById(R.id.eText_emailAddress)).getText().toString();
-                String subject = "Subject: " + ((TextView)findViewById(R.id.eText_emailSubject)).getText().toString();
-                ((TextView)findViewById(R.id.tView_to)).setText(emailAddress);
-                ((TextView)findViewById(R.id.tView_from)).setText(subject + "\n" + getComplexity());
-
-                // change the icon
-                MenuItem mi = menuItem;
-                mi.setIcon(R.drawable.ic_action_send);
-
+                if(menuItem.getTitle().equals("Compose")) {
+                    String emailAddress = "To: " + ((TextView) findViewById(R.id.eText_emailAddress)).getText().toString();
+                    String subject = "Subject: " + ((TextView) findViewById(R.id.eText_emailSubject)).getText().toString();
+                    ((TextView) findViewById(R.id.tView_to)).setText(emailAddress);
+                    ((TextView) findViewById(R.id.tView_subject)).setText(subject + "\n" + getComplexity());
+                    menuItem.setIcon(R.drawable.ic_action_send);
+                    menuItem.setTitle(R.string.menu_send);
+                } else {
+                    TextView tv = ((TextView)findViewById(R.id.tView_subject));
+                    tv.setText(R.string.tView_subject);
+                    menuItem.setIcon(R.drawable.ic_compose);
+                    menuItem.setTitle(R.string.menu_compose);
+                }
                 return true;
             case (R.id.menu_settings):
                 return true;
@@ -133,7 +136,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 }
-
 
 // data structure -> worst: getMin(), insert(), search() | average: getMin(), insert(), search()
 // binary search tree -> O(log(n)), O(log(n)), O(log(n)) | O(n), O(n), O(n)
